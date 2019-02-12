@@ -5,10 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
+    <header class="container">
+        <h1>Hangman</h1>
+    </header>
+
+    <main class="container">
+        <div class="row">
+            <h2>this game's title</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Hangman icon, etc -->
+                <img src="http://lorempixel.com/g/200/400/" alt="...">
+            </div>
+            <div class="col-md-6">
+                
+                <p id="notStarted">press any key to start</p>
+                <p>wins:</p>
+
+                <!-- no.of wins, increase as gueses the word -->
+                <p id="wins">0</p>
+
+                <!-- _ _ _ _ the word here array of letters in a word, show letter when matches-->
+                <p id="theWord"></p>
+                <p>Number of guesses remainning:</p>
+
+                <!-- decrease when guessing the word -->
+                <p id="lives"></p>
+                <p>letters already guessed</p>
+
+                <!-- add the key stroks to array of letters that is not already there -->
+                <p id="guessdLetter"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- placeholder -->
+    </footer>
+
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
     
 </body>
 </html>
