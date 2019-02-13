@@ -1,19 +1,18 @@
 var started = false;
 var wins = 0;
 var word="";//original word to be guessed
-var wordLetter=[];//split into lettters guessed or not
+var wordLetter=[false];//split into lettters guessed or not
 var guessedLetter = [];
 var lives=12;
-var imgLink = "http://lorempixel.com/g/200/400/";
+var imgLink = "assets/images/HP_5_CVR_LRGB.jpg";
 
-//api key for https://www.potterapi.com/#introduction
+
 var urlprefix="http://hp-api.herokuapp.com/api/characters";
 // var apikey = "$2a$10$b/eT7zLFv5byV8neJHr5Cenzbty4CSQZB17Q8L26AcHZ7i4KH.54i";
 
 
 // when document load, get a word
 window.onload = function() {
-    // console.log("here");
     restartGame();
 }
 
@@ -42,16 +41,21 @@ function keyPressed(event) {
     //guessed all
     if(wordLetter.indexOf(false) == -1){
         alert("you guessed it!");
+        // update the image and the title after wining
+        updateTitleAndImg();
+        //reset parameters and get a new word
         addWin();
         getWordFromAPI();
-        updateUI();
-        //TODO update the image and the title after wining
-        // updateTitleAndImg();
     }
     //run out of live
     if(lives == 0){
         //confirm if want to start over again
-        alert("you died! :(");
+        var retry = confirm("you died! :( Try again?");
+        if(retry){
+            restartGame();
+        }else{
+            //TODO show game over
+        }
     }
 
 };
@@ -63,6 +67,7 @@ function restartGame(){
     wordLetter=[];//split into lettters guessed or not
     guessedLetter = [];
     lives=12;
+    document.getElementById("gametitle").style.display = "none";
     document.getElementById("notStarted").style.display = "initial";
     getWordFromAPI();
 }
@@ -80,14 +85,16 @@ function getWordFromAPI(){
             var j = JSON.parse(http.responseText)
             // console.log(j[0].name);
             // console.log(j[0].image);
-
+            //console.log(j.length);
             var characterId = Math.floor(Math.random() * j.length); //random charactor id generating
-                //test case:
+            
+            //test case:
             // word = "Harry Potter potter";
+
             word = j[characterId].name.toLowerCase();
+            imgLink = j[characterId].image;
             console.log(word);
             //removing all spaces
-            //TODO show spaces in ui
             // word = word.toLowerCase().replace(/\s/g, '');
             for (i = 0; i<word.length;i++){
                if (word[i] !== " "){
@@ -98,6 +105,7 @@ function getWordFromAPI(){
             }
             // console.log(word);
             // console.log(wordLetter);
+            updateUI();
 
         }else if(this.status !== 200){
             alert("Sorry, API isn't working! Try again later!");
@@ -158,4 +166,11 @@ function addWin(){
     word="";//original word to be guessed
     wordLetter=[];//split into lettters guessed or not
     guessedLetter = [];
+}
+
+
+function updateTitleAndImg(){
+    document.getElementById("gametitle").style.display = "initial";
+    document.getElementById("gametitle").innerHTML = "We love " + word + "!!";
+    document.getElementById("leftimage").src = imgLink;
 }
