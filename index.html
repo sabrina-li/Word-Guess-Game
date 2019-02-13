@@ -7,23 +7,24 @@
     <title>Word Guess Game</title>
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="text-light">
     <header class="container">
-        <h1>Hangman</h1>
+        <h1 class="display-2">Hangman</h1>
+        <h4 class="display-4">Harry Potter Characters</h4>
     </header>
 
     <main class="container">
-        <div class="row">
+        <div class="row justify-content-center  pt-3">
             <h2 id="gametitle">this game's title</h2>
         </div>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row justify-content-md-center  pt-3">
+            <div class="col-md-4  pt-3">
                 <!-- Hangman icon, etc -->
-                <img id="leftimage" src="assets/images/HP_5_CVR_LRGB.jpg" alt="Harry Potter" width="60%">
+                <img class="w-75" id="leftimage" src="assets/images/HP_5_CVR_LRGB.jpg" alt="Harry Potter" width="60%">
             </div>
-            <div class="col-md-6">
-                
+            <div class="col-md-auto pt-3 text-center">
                 <p id="notStarted">press any key to start</p>
                 <p>wins:</p>
 

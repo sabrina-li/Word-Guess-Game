@@ -67,6 +67,8 @@ function restartGame(){
     wordLetter=[];//split into lettters guessed or not
     guessedLetter = [];
     lives=12;
+    imgLink = "assets/images/HP_5_CVR_LRGB.jpg";
+    document.getElementById("leftimage").src = imgLink;
     document.getElementById("gametitle").style.display = "none";
     document.getElementById("notStarted").style.display = "initial";
     getWordFromAPI();
