@@ -5,6 +5,7 @@
 html,body{
     height: 100%;
     width: 100%;
+    
 }
 
 body{
@@ -13,8 +14,15 @@ body{
     background-repeat: round;
     background-size: cover;
     font-size: 25px;
+
+}
+
+p{
+    color:#EEE9B4;
+;
 }
 
 h1,h4{
     font-family: 'Magic School Two';
+    color:#E7B42E
 }

@@ -13,6 +13,7 @@ var urlprefix="http://hp-api.herokuapp.com/api/characters";
 
 // when document load, get a word
 window.onload = function() {
+    // start the game with initial vars
     restartGame();
 }
 
@@ -21,13 +22,14 @@ document.addEventListener('keypress', keyPressed);
 
 // when user press any key
 function keyPressed(event) {
-    console.log("key pressed! " )
-    // start the game with initial vars
+    
     document.getElementById("notStarted").style.display = "none";
     var thisKey = String.fromCharCode(event.keyCode).toLowerCase();
     
-    if (thisKey == " "){
-        //if space do nothing
+    //check if the key press is a-z or A-Z, 
+    if (event.keyCode < 65 || (event.keyCode >90 && event.keyCode < 97) || event.keyCode > 122){
+        //if not, alert user
+        alert("Please type in A-Z!")
     }else if (word.includes(thisKey)){
         //guessed right
         addToWordLetterArray(thisKey); 
