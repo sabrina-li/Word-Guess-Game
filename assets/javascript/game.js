@@ -1,4 +1,4 @@
-var started = false;
+var pageloaded = false;
 var wins = 0;
 var word="";//original word to be guessed
 var wordLetter=[false];//split into lettters guessed or not
@@ -17,46 +17,48 @@ window.onload = function() {
     restartGame();
 }
 
+
 //add event listener for key press
 document.addEventListener('keypress', keyPressed);
 
 // when user press any key
 function keyPressed(event) {
-    
-    document.getElementById("notStarted").style.display = "none";
-    var thisKey = String.fromCharCode(event.keyCode).toLowerCase();
-    
-    //check if the key press is a-z or A-Z, 
-    if (event.keyCode < 65 || (event.keyCode >90 && event.keyCode < 97) || event.keyCode > 122){
-        //if not, alert user
-        alert("Please type in A-Z!")
-    }else if (word.includes(thisKey)){
-        //guessed right
-        addToWordLetterArray(thisKey); 
-    }else{
-        //guessed wrong, add to guessed and decrease life
-        addToGuessedLetters(thisKey);
-    }
-
-     updateUI();
-
-    //guessed all
-    if(wordLetter.indexOf(false) == -1){
-        alert("you guessed it!");
-        // update the image and the title after wining
-        updateTitleAndImg();
-        //reset parameters and get a new word
-        addWin();
-        getWordFromAPI();
-    }
-    //run out of live
-    if(lives == 0){
-        //confirm if want to start over again
-        var retry = confirm("you died! :( Try again?");
-        if(retry){
-            restartGame();
+    if (pageloaded){
+        document.getElementById("notStarted").style.display = "none";
+        var thisKey = String.fromCharCode(event.keyCode).toLowerCase();
+        
+        //check if the key press is a-z or A-Z, 
+        if (event.keyCode < 65 || (event.keyCode >90 && event.keyCode < 97) || event.keyCode > 122){
+            //if not, alert user
+            alert("Please type in A-Z!")
+        }else if (word.includes(thisKey)){
+            //guessed right
+            addToWordLetterArray(thisKey); 
         }else{
-            //TODO show game over
+            //guessed wrong, add to guessed and decrease life
+            addToGuessedLetters(thisKey);
+        }
+
+        updateUI();
+
+        //guessed all
+        if(wordLetter.indexOf(false) == -1){
+            alert("you guessed it!");
+            // update the image and the title after wining
+            updateTitleAndImg();
+            //reset parameters and get a new word
+            addWin();
+            getWordFromAPI();
+        }
+        //run out of live
+        if(lives == 0){
+            //confirm if want to start over again
+            var retry = confirm("you died! :( Try again?");
+            if(retry){
+                restartGame();
+            }else{
+                //TODO show game over
+            }
         }
     }
 
@@ -110,6 +112,7 @@ function getWordFromAPI(){
             // console.log(word);
             // console.log(wordLetter);
             updateUI();
+            pageloaded = true;
 
         }else if(this.status !== 200){
             alert("Sorry, API isn't working! Try again later!");
@@ -147,17 +150,20 @@ function constructDisplayWord(){
 }
 
 function addToGuessedLetters(thisKey){
-    if(guessedLetter.includes(thisKey)){
+    if(guessedLetter.includes(thisKey.toUpperCase())){
         //guessed the same key already guessed
     }else{
-        guessedLetter.push(thisKey);
+        guessedLetter.push(thisKey.toUpperCase());
         lives -= 1;
+        if(lives<10){
+            alert("pssssst.. see console for hints on the word!");
+        }
     }
 }
 
 function updateUI(){
     document.getElementById("theWord").innerHTML = constructDisplayWord();
-    document.getElementById("guessdLetter").innerHTML = guessedLetter;
+    document.getElementById("guessdLetter").innerHTML = guessedLetter.toString().replace(/,/g, ' ');;
     document.getElementById("lives").innerHTML = lives;
     document.getElementById("wins").innerHTML = wins;
 }
