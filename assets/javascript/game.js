@@ -46,6 +46,7 @@ function keyPressed(event) {
             alert("you guessed it!");
             // update the image and the title after wining
             updateTitleAndImg();
+            playSound();
             //reset parameters and get a new word
             addWin();
             getWordFromAPI();
@@ -183,4 +184,34 @@ function updateTitleAndImg(){
     document.getElementById("gametitle").style.display = "initial";
     document.getElementById("gametitle").innerHTML = "We love " + word + "!!";
     document.getElementById("leftimage").src = imgLink;
+}
+
+
+function playSound(){
+    // var audio = document.getElementById('audio');
+    var audio = new Audio();
+    switch(word){
+        case "bellatrix lestrange":
+            audio.src = "assets/sounds/Bellatrix.mp3";
+            break;
+        case "dolores umbridge":
+            audio.src = "assets/sounds/deloros.mp3";
+            break;
+        case "hermione granger":
+            audio.src = "assets/sounds/hermione.mp3";
+            break;
+        case "luna lovegood":
+            audio.src = "assets/sounds/luna.mp3";
+            break;
+        case "harry potter":
+            audio.src = "assets/sounds/harry.mp3";
+            break;
+        default:
+            audio.src = "assets/sounds/harry_potter_theme.mp3";
+            break;
+    }
+    // var audio = new Audio("assets/sounds/hermione.mp3");
+    // audio.src = "assets/sounds/hermione.wav";
+    audio.play();   
+
 }
