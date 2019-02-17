@@ -1,4 +1,4 @@
-var urlprefix="http://hp-api.herokuapp.com/api/characters";
+var urlprefix="https://hp-api.herokuapp.com/api/characters";
 class Game{
 
 //reset all to initial and get new word

@@ -7,7 +7,7 @@ var lives=12;
 var imgLink = "assets/images/HP_5_CVR_LRGB.jpg";
 
 
-var urlprefix="https://hp-api.herokuapp.com/api/characters";
+// var urlprefix="https://hp-api.herokuapp.com/api/characters";
 // var apikey = "$2a$10$b/eT7zLFv5byV8neJHr5Cenzbty4CSQZB17Q8L26AcHZ7i4KH.54i";
 
 
