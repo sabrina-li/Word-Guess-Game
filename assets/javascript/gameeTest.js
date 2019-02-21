@@ -4,6 +4,8 @@ var game;
 window.onload = function() {
     // start the game with initial vars
     game = new Game();
+    //test for gameover page
+    // $("main").load("gameover.html");
     
 }
 
@@ -34,6 +36,9 @@ function keyPressed(event) {
                 game = new Game();
             }else{
                 //TODO show game over
+                // document.getElementsByTagName("MAIN")[0].style.display = "none";
+                // $("main").html("display","none");
+                $("main").load("gameover.html");
             }
         }
         game.updateUI();

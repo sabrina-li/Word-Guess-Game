@@ -26,3 +26,11 @@ h1,h4{
     font-family: 'Magic School Two';
     color:#E7B42E
 }
+
+#gameover-text{
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #4A3600;
+}

@@ -25,7 +25,8 @@ class Game{
 
     guessALetter(key){
         //check if the key press is a-z or A-Z, 
-        if (key < 65 || (key >90 && key < 97) || key > 122){
+        let keyCode = key.charCodeAt(0);
+        if (keyCode < 65 || (keyCode >90 && keyCode < 97) || keyCode > 122){
             //if not, alert user
             // console.log("Please type in A-Z!");
         }else if (this._word.includes(key)){
