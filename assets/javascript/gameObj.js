@@ -5,13 +5,13 @@ class Game{
 
 //reset all to initial and get new word
     constructor(){
+        this.gameReady = false;
         this._wins = 0;
         this._word="";//original word to be guessed
         this._wordLetter=[];//split into lettters guessed or not
         this._guessedLetter = [];
         this._lives=12;
         this._imgLink = "assets/images/HP_5_CVR_LRGB.jpg";
-        this._gameReady = false;
         this._audio = new Audio();
         document.getElementById("leftimage").src = this._imgLink;
         document.getElementById("gametitle").style.display = "none";
@@ -19,9 +19,9 @@ class Game{
         this._getWordFromAPI(this);
     }
 
-    get gameReady() {
-        return this._gameReady;
-    }
+    // get gameReady() {
+    //     return this._gameReady;
+    // }
 
     guessALetter(key){
         //check if the key press is a-z or A-Z, 
@@ -98,7 +98,7 @@ class Game{
                         obj._wordLetter.push(true);
                     }
                 }
-                obj._gameReady = true;
+                obj.gameReady = true;
                 console.log("the charachtoer you are trying to guess is: "+obj._word);
                 obj.updateUI();
             }else if(this.status !== 200){
