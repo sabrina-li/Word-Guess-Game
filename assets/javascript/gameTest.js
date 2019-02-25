@@ -15,7 +15,7 @@ document.addEventListener('keypress', keyPressed);
 
 // when user press any key
 function keyPressed(event) {
-    console.log(typeof game!=="undefined");
+    // console.log(typeof game!=="undefined");
     if (typeof game!=="undefined" && game.gameReady){
         document.getElementById("notStarted").style.display = "none";
         let thisKey = String.fromCharCode(event.keyCode).toLowerCase();
