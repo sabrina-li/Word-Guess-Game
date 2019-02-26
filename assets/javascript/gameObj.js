@@ -128,7 +128,7 @@ class Game{
             this._guessedLetter.push(thisKey.toUpperCase());
             this._lives -= 1;
             if(this._wins ==0 && this._lives===10){
-                alert("pssssst.. see console for hints on the word!");
+                // alert("pssssst.. see console for hints on the word!");
             }
         }
     }  
