@@ -11,6 +11,8 @@ Hosted here: https://sabrina-li.github.io/Word-Guess-Game
 
 * When the letter you typed is part of the word, it will show up in the page to replace the dashes.
 
+* If you type the same letter twice, game will do nothing. All letters that are not part of the name is shown at the bottom
+
 * Once you guess the entire name, a prompt will show and you can choose to keep playing. Your lives will reset to 12 everytime you win.
 
 * Enjoy a little quote or music when you win the round and see the charactors picture change on the left
